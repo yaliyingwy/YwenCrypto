@@ -13,10 +13,10 @@
 		F502915C1ADF8E1C00272A23 /* RSACrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = F50291561ADF8E1C00272A23 /* RSACrypto.m */; };
 		F502915D1ADF8E1C00272A23 /* DesCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = F50291581ADF8E1C00272A23 /* DesCrypto.m */; };
 		F502915E1ADF8E1C00272A23 /* CryptoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F502915A1ADF8E1C00272A23 /* CryptoManager.m */; };
-		F50291601ADF8F4800272A23 /* public_key.der in Resources */ = {isa = PBXBuildFile; fileRef = F502915F1ADF8F4800272A23 /* public_key.der */; };
 		F50291621ADF8F8300272A23 /* TestRSA.m in Sources */ = {isa = PBXBuildFile; fileRef = F50291611ADF8F8300272A23 /* TestRSA.m */; };
 		F50291641ADF922300272A23 /* TestDes.m in Sources */ = {isa = PBXBuildFile; fileRef = F50291631ADF922300272A23 /* TestDes.m */; };
-		F50291661ADF997200272A23 /* private_key.p12 in Resources */ = {isa = PBXBuildFile; fileRef = F50291651ADF997200272A23 /* private_key.p12 */; };
+		F50939EC1AE8829100533C64 /* public_key.der in Resources */ = {isa = PBXBuildFile; fileRef = F50939EA1AE8829100533C64 /* public_key.der */; };
+		F50939ED1AE8829100533C64 /* private_key.p12 in Resources */ = {isa = PBXBuildFile; fileRef = F50939EB1AE8829100533C64 /* private_key.p12 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,10 +55,10 @@
 		F50291591ADF8E1C00272A23 /* DesCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesCrypto.h; sourceTree = "<group>"; };
 		F502915A1ADF8E1C00272A23 /* CryptoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CryptoManager.m; sourceTree = "<group>"; };
 		F502915B1ADF8E1C00272A23 /* CryptoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CryptoManager.h; sourceTree = "<group>"; };
-		F502915F1ADF8F4800272A23 /* public_key.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = public_key.der; sourceTree = "<group>"; };
 		F50291611ADF8F8300272A23 /* TestRSA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestRSA.m; sourceTree = "<group>"; };
 		F50291631ADF922300272A23 /* TestDes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDes.m; sourceTree = "<group>"; };
-		F50291651ADF997200272A23 /* private_key.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = private_key.p12; sourceTree = "<group>"; };
+		F50939EA1AE8829100533C64 /* public_key.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = public_key.der; sourceTree = "<group>"; };
+		F50939EB1AE8829100533C64 /* private_key.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = private_key.p12; sourceTree = "<group>"; };
 		F83FAE06A3C698C7F522D57F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,9 +128,9 @@
 			isa = PBXGroup;
 			children = (
 				F50291611ADF8F8300272A23 /* TestRSA.m */,
-				F50291651ADF997200272A23 /* private_key.p12 */,
+				F50939EA1AE8829100533C64 /* public_key.der */,
+				F50939EB1AE8829100533C64 /* private_key.p12 */,
 				F50291631ADF922300272A23 /* TestDes.m */,
-				F502915F1ADF8F4800272A23 /* public_key.der */,
 				F502914B1ADF8DAE00272A23 /* Supporting Files */,
 			);
 			path = YwenCryptoTests;
@@ -234,8 +234,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F50291601ADF8F4800272A23 /* public_key.der in Resources */,
-				F50291661ADF997200272A23 /* private_key.p12 in Resources */,
+				F50939EC1AE8829100533C64 /* public_key.der in Resources */,
+				F50939ED1AE8829100533C64 /* private_key.p12 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

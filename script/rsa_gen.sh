@@ -1,4 +1,7 @@
 #!/usr/bin/env bash  
+echo "clear old keys"
+rm -f key/*
+cd key
 echo "Generating RSA key pair ..."  
 echo "1024 RSA key: private_key.pem"  
 openssl genrsa -out private_key.pem 1024  

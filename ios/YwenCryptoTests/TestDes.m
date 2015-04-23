@@ -1,20 +1,20 @@
 //
-//  TestRSA.m
-//  
+//  TestDes.m
+//  YwenCrypto
 //
 //  Created by ywen on 15/4/16.
-//
+//  Copyright (c) 2015年 ywen. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import "YwenCrypto.h"
 
-@interface TestRSA : XCTestCase
+@interface TestDes : XCTestCase
 
 @end
 
-@implementation TestRSA
+@implementation TestDes
 
 - (void)setUp {
     [super setUp];
@@ -31,29 +31,29 @@
     XCTAssert(YES, @"Pass");
 }
 
-- (void) testRsa {
+-(void) testDes {
     CryptoManager *cryptoManager = [CryptoManager sharedInstance];
-    NSString *der = [[NSBundle bundleForClass:[self class]] pathForResource:@"public_key" ofType:@"der"];
-    XCTAssertNotNil(der, @"der does not exist");
-    BOOL pubResult = [cryptoManager setUpRsaPubkey: der];
-    XCTAssertTrue(pubResult, @"setup rsa public key failed");
-    NSString *encryptStr = [cryptoManager rsaEncrypt:@"1"];
+    NSString *encryptStr = [cryptoManager desEncryt:@"1" key:@"12345678"];
     NSLog(@"encrypted string is %@", encryptStr);
-    
-    NSString *p12 = [[NSBundle bundleForClass:[self class]] pathForResource:@"private_key" ofType:@"p12"];
-    XCTAssertNotNil(p12, @"p12 does not exist");
-    BOOL privateResult = [cryptoManager setUpRsaPrivatekey:p12 passwd:@""];
-    XCTAssertTrue(privateResult, @"setup rsa private key failed");
-    NSString *decryptStr = [cryptoManager rsaDecrypt:encryptStr];
+    NSString *decryptStr = [cryptoManager desDecryt:encryptStr key:@"12345678"];
     NSLog(@"decrypted string is %@", decryptStr);
-    
     XCTAssertEqualObjects(@"1", decryptStr);
+    
+}
+
+-(void) testDESWithJava {
+    CryptoManager *cryptoManager = [CryptoManager sharedInstance];
+    NSString *encryptStr = @"JGY15Y2I+6TPCvoNsOvIe03lLjhV82Tn";
+    NSString *decryptStr = [cryptoManager desDecryt:encryptStr key:@"12345678"];
+    NSLog(@"decrypted string is %@", decryptStr);
+    XCTAssertEqualObjects(@"http://wo.yao.cl", decryptStr);
 }
 
 - (void)testPerformanceExample {
     // This is an example of a performance test case.
     [self measureBlock:^{
         // Put the code you want to measure the time of here.
+       
     }];
 }
 
