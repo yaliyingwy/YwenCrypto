@@ -64,6 +64,30 @@
     XCTAssertEqualObjects(@"http://wo.yao.cl", decryptStr);
 }
 
+
+-(void) testRsaWithNodejs {
+    NSString *encryptStr = @"KTZfLojJu9rpLhPU/XVvs4hUb1/DO6PDJHBFSYG7enJl1dgoDl++6A4U+vqmj7WVEqZzQFHsWlXOyhf+IzQQxfAXpWzfWNRnlKd+fiuQSovXVfnnJjZ9mrOxKR6qfH0uo8FAJsTxoxmGI5tTDutHVgtEYNjKB3uS+I8orPLae9I=";
+    CryptoManager *cryptoManager = [CryptoManager sharedInstance];
+    
+    NSString *p12 = [[NSBundle bundleForClass:[self class]] pathForResource:@"private_key" ofType:@"p12"];
+    XCTAssertNotNil(p12, @"p12 does not exist");
+    BOOL privateResult = [cryptoManager setUpRsaPrivatekey:p12 passwd:@""];
+    XCTAssertTrue(privateResult, @"setup rsa private key failed");
+    NSString *decryptStr = [cryptoManager rsaDecrypt:encryptStr];
+    NSLog(@"decrypted string is %@", decryptStr);
+    
+    NSString *der = [[NSBundle bundleForClass:[self class]] pathForResource:@"public_key" ofType:@"der"];
+    XCTAssertNotNil(der, @"der does not exist");
+    BOOL pubResult = [cryptoManager setUpRsaPubkey: der];
+    XCTAssertTrue(pubResult, @"setup rsa public key failed");
+    
+    //copy to nodejs side for decrypt test
+    NSString *iosEncryptStr = [cryptoManager rsaEncrypt:decryptStr];
+    NSLog(@"ios ecnrypt string is %@", iosEncryptStr);
+    
+    XCTAssertEqualObjects(@"http://wo.yao.cl", decryptStr);
+}
+
 - (void)testPerformanceExample {
     // This is an example of a performance test case.
     [self measureBlock:^{

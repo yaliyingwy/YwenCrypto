@@ -19,7 +19,7 @@
 -(BOOL) setPublicKeyFromDer:(NSString *) derFile;
 -(BOOL) setPrivateKeyFromP12:(NSString *) p12File password: (NSString *) password;
 
--(NSString *) encrypt: (NSString *) text;
--(NSString *) decrypt: (NSString *) text;
+-(NSString *) encrypt: (NSString *) text padding: (SecPadding) padding;
+-(NSString *) decrypt: (NSString *) text padding: (SecPadding) padding;
 
 @end

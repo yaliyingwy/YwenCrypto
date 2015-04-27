@@ -49,6 +49,15 @@
     XCTAssertEqualObjects(@"http://wo.yao.cl", decryptStr);
 }
 
+-(void) testDESWithNodejs {
+    CryptoManager *cryptoManager = [CryptoManager sharedInstance];
+    NSString *encryptStr = @"JGY15Y2I+6TPCvoNsOvIe03lLjhV82Tn";
+    NSString *decryptStr = [cryptoManager desDecryt:encryptStr key:@"12345678"];
+    NSLog(@"decrypted string is %@", decryptStr);
+    XCTAssertEqualObjects(@"http://wo.yao.cl", decryptStr);
+    
+}
+
 - (void)testPerformanceExample {
     // This is an example of a performance test case.
     [self measureBlock:^{

@@ -99,7 +99,8 @@
  *  @return 加密后的数据
  */
 
--(NSString *)encrypt:(NSString *)text {
+-(NSString *)encrypt:(NSString *)text padding: (SecPadding) padding {
+  
     if (self.pubKey == nil) {
         return nil;
     }
@@ -110,12 +111,11 @@
     [content getBytes:plain
                length:plainLen];
     
-    size_t cipherLen = 128; // 当前RSA的密钥长度是128字节
+    size_t cipherLen = 128; // 当前RSA的密钥长度是128字节, 128 * 8 = 1024位密钥，这里是硬编码，用命令生成密钥时请指定1024
     void *cipher = malloc(cipherLen);
     
-    OSStatus returnCode = SecKeyEncrypt(self.pubKey, kSecPaddingPKCS1, plain,
+    OSStatus returnCode = SecKeyEncrypt(self.pubKey, padding, plain,
                                         plainLen, cipher, &cipherLen);
-    
     NSData *result = nil;
     if (returnCode == 0) {
         result = [NSData dataWithBytes:cipher
@@ -129,7 +129,8 @@
 }
 
 
--(NSString *)decrypt:(NSString *)text {
+-(NSString *)decrypt:(NSString *)text padding:(SecPadding) padding {
+  
     if (self.privateKey == nil) {
         return nil;
     }
@@ -139,7 +140,7 @@
     [data getBytes:cipher length:cipherLen];
     size_t plainLen = SecKeyGetBlockSize(self.privateKey) - 12;
     void *plain = malloc(plainLen);
-    OSStatus status = SecKeyDecrypt(self.privateKey, kSecPaddingPKCS1, cipher, cipherLen, plain, &plainLen);
+    OSStatus status = SecKeyDecrypt(self.privateKey, padding, cipher, cipherLen, plain, &plainLen);
     
     if (status != noErr) {
         return nil;

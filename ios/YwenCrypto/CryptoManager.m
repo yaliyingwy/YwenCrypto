@@ -17,6 +17,8 @@ static id instance = nil;
     if (self) {
         self.rsa = [[RSACrypto alloc] init];
         self.des = [[DesCrypto alloc] init];
+        //default padding bettween java and ios
+        self.rsaPadding = kSecPaddingPKCS1;
     }
     return self;
 }
@@ -56,14 +58,18 @@ static id instance = nil;
     }
 }
 
+-(void) setUpRsaPadding: (SecPadding) padding {
+    
+}
+
 -(NSString *)rsaEncrypt:(NSString *)content
 {
-    return [self.rsa encrypt:content];
+    return [self.rsa encrypt:content padding: self.rsaPadding];
 }
 
 -(NSString *)rsaDecrypt:(NSString *)content
 {
-    return [self.rsa decrypt:content];
+    return [self.rsa decrypt:content padding: self.rsaPadding];
 }
 
 -(NSString *)desEncryt:(NSString *)content key:(NSString *)key {

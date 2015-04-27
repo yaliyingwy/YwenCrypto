@@ -13,6 +13,7 @@
 @interface CryptoManager : NSObject
 
 @property (strong, nonatomic) RSACrypto *rsa;
+@property (assign, nonatomic) SecPadding rsaPadding;
 @property (strong, nonatomic) DesCrypto *des;
 
 +(id) sharedInstance;

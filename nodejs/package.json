@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "mocha": "*",
+    "should": "latest"
+  }
+}
