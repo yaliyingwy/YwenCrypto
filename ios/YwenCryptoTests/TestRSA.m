@@ -88,6 +88,21 @@
     XCTAssertEqualObjects(@"http://wo.yao.cl", decryptStr);
 }
 
+-(void) testRsaWithPhp {
+    NSString *encryptStr = @"GGUTssx3yg7rVR2CRHF9/QS5dJZYOF6pMKSUYMNpgQwPPQMTUD2yhNnwmtXMJAP5waZrxXB68liwYmjTPYWe7zvwuqreSQZCIj99A/5hbFNp5QCmheajO/40Uujk9rRFP5oirg9x9vD2MwcQsdVBCGJXW0sduNrDAXgvU4WMhb8=";
+    CryptoManager *cryptoManager = [CryptoManager sharedInstance];
+    
+    NSString *p12 = [[NSBundle bundleForClass:[self class]] pathForResource:@"private_key" ofType:@"p12"];
+    XCTAssertNotNil(p12, @"p12 does not exist");
+    BOOL privateResult = [cryptoManager setUpRsaPrivatekey:p12 passwd:@""];
+    XCTAssertTrue(privateResult, @"setup rsa private key failed");
+    NSString *decryptStr = [cryptoManager rsaDecrypt:encryptStr];
+    NSLog(@"decrypted string is %@", decryptStr);
+    
+    XCTAssertEqualObjects(@"http://wo.yao.cl", decryptStr);
+    
+}
+
 - (void)testPerformanceExample {
     // This is an example of a performance test case.
     [self measureBlock:^{
