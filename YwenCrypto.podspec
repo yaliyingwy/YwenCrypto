@@ -92,7 +92,7 @@ Pod::Spec.new do |s|
   s.source_files  = "Classes", "ios/YwenCrypto/*.{h,m}"
   s.exclude_files = "Classes/Exclude"
 
-  s.public_header_files = "ios/YwenCrypto/YwenCrypto.h"
+  #s.public_header_files = "ios/YwenCrypto/YwenCrypto.h"
 
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
