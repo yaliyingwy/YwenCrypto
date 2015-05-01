@@ -21,7 +21,7 @@ module.exports.rsaDecrypt = function(privateKey, text) {
 module.exports.desEncrypt = function(key, iv, text) {
     var cipher = crypto.createCipheriv('des-cbc', new Buffer(key), new Buffer(iv));
     cipher.setAutoPadding(true);
-    var result = [cipher.update(text)];
+    var result = [cipher.update(text, 'utf8')];
     result.push(cipher.final());
 
     return Buffer.concat(result).toString('base64');
@@ -32,5 +32,5 @@ module.exports.desDecrypt = function(key, iv, text) {
     decipher.setAutoPadding(true);
     var result = [decipher.update(text, 'base64')];
     result.push(decipher.final());
-    return Buffer.concat(result).toString();
+    return Buffer.concat(result).toString('utf8');
 }
