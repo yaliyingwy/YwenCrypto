@@ -89,7 +89,7 @@ public class CryptoManager {
         Cipher cipher = null;
         String encryptStr = null;
         try {
-            cipher = Cipher.getInstance("RSA");
+            cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
             cipher.init(Cipher.ENCRYPT_MODE, this.publicKey);
             byte[] textData = text.getBytes("utf-8");
             byte[] encryptData = cipher.doFinal(text.getBytes("utf-8"));
@@ -111,7 +111,7 @@ public class CryptoManager {
         Cipher cipher = null;
         String decryptStr = null;
         try {
-            cipher = Cipher.getInstance("RSA");
+            cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
             cipher.init(Cipher.DECRYPT_MODE, this.privateKey);
             byte[] encryptData = new BASE64Decoder().decodeBuffer(text);
             byte[] decryptData = cipher.doFinal(encryptData);
