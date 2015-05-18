@@ -77,7 +77,9 @@ static id instance = nil;
 }
 
 -(NSString *)desDecryt:(NSString *)content key:(NSString *)key {
-    return [self.des decrypt:content key:key];
+    //MARK: 去除换行和空白
+    NSString *trimedStr = [[content mutableCopy] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    return [self.des decrypt:trimedStr key:key];
 }
 
 
