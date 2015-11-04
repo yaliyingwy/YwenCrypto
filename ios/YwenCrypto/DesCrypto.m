@@ -21,7 +21,7 @@
  */
 
 - (NSString *) encrypt: (NSString *) text key:(NSString *) key {
-    return [[self encrypt:text encryptOrDecrypt:kCCEncrypt key:key] base64EncodedString];
+    return [[self encrypt:text encryptOrDecrypt:kCCEncrypt key:key] WY_Base64EncodedString];
 }
 
 /**
@@ -58,7 +58,7 @@
     }
     else
     {
-        data = [NSData dataFromBase64String:sText];
+        data = [NSData WY_DataFromBase64String:sText];
     }
     
     

@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "YwenCrypto"
-  s.version      = "0.0.4"
+  s.version      = "0.0.5"
   s.summary      = "rsa and des crypto on ios"
 
   s.description  = <<-DESC
@@ -78,7 +78,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/yaliyingwy/YwenCrypto.git", :tag => "0.0.4" }
+  s.source       = { :git => "https://github.com/yaliyingwy/YwenCrypto.git", :tag => "0.0.5" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -131,6 +131,6 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  s.dependency "NSData+Base64"
+  s.dependency "YwenKit"
 
 end

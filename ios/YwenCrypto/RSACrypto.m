@@ -125,7 +125,7 @@
     free(plain);
     free(cipher);
     
-    return [result base64EncodedString];
+    return [result WY_Base64EncodedString];
 }
 
 
@@ -134,7 +134,7 @@
     if (self.privateKey == nil) {
         return nil;
     }
-    NSData *data = [NSData dataFromBase64String:text];
+    NSData *data = [NSData WY_DataFromBase64String:text];
     size_t cipherLen = [data length];
     void *cipher = malloc(cipherLen);
     [data getBytes:cipher length:cipherLen];
